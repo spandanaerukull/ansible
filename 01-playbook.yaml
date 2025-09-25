@@ -1,0 +1,5 @@
+- name: ping the server
+  hosts: frontend #inventory group name
+  tasks:  #list of tasks to be executed on the server
+    - name: ping the server 
+      ansible.builtin.ping: #module name 

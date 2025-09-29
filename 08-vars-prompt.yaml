@@ -1,0 +1,20 @@
+# promp is used to take input from user at runtime
+# vars_prompt is used to define the prompt variables
+# the input taken from user is stored in the defined variables
+# private: true is used to hide the input from terminal
+
+- name: variables from prompt
+  hosts: local
+  connection: local
+  vars_prompt: # defining prompt variables
+  - name: USERNAME # variable name
+    prompt: Please enter your username # message to be displayed to user
+    private: true # input will be hidden
+  
+  - name: PASSWORD # variable name
+    prompt: please enter your password # message to be displayed to user
+    private: true # input will be hidden
+  tasks:
+  - name: printing user information # task name
+    ansible.builtin.debug:
+      msg: "Hello Username is: {{ USERNAME }}, password is: {{ PASSWORD }}" # using variables

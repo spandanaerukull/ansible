@@ -1,0 +1,13 @@
+# if i want to give variables from inventory file from only one frontend server
+# this is for host variables
+- name: variables from inventory
+  hosts: frontend 
+  tasks:
+  - name: print course info
+    ansible.builtin.debug:
+      msg: "Hello I am learning {{ COURSE }}, Duration: {{ DURATION }}, Trainer is: {{ TRAINER }}"
+
+
+      # using variables from inventory file in frontend 
+      # if you want to give variables from inventory file from frontend group then use hosts: frontend, so it will take variables from all the servers in frontend group
+      # here i gave username password also in the inventory file so it will take from there

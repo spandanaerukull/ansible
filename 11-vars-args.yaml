@@ -1,0 +1,11 @@
+# in this file i will give variables from command line and from inventory file
+# variables from command line and inventory file
+# in case if we don't have variables in inventory file then it will take from command line
+
+- name: variables from inventory
+  hosts: local
+  connection: local
+  tasks:
+  - name: print course info
+    ansible.builtin.debug:
+      msg: "Hello I am learning {{ COURSE }}, Duration: {{ DURATION }}, Trainer is: {{ TRAINER }}"

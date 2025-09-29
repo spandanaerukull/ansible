@@ -2,4 +2,4 @@
   hosts: frontend #inventory group name
   tasks:  #list of tasks to be executed on the server
     - name: ping the server 
-      ansible.builtin.ping: #module name 
+      ansible.builtin.ping: #module name ansible module = linuc commands

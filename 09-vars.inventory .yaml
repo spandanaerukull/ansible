@@ -1,0 +1,11 @@
+# keep this variales file in the same directory where playbook is present
+# variables from inventory file
+
+- name: variables from inventory # playbook name
+  hosts: local
+  connection: local
+  tasks:
+  - name: print course info
+    ansible.builtin.debug:
+      msg: "Hello I am learning {{ COURSE }}, Duration: {{ DURATION }}, Trainer is: {{ TRAINER }}" 
+      # using variables from inventory file

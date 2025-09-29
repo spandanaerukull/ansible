@@ -1,0 +1,13 @@
+- name: play level variables # play level variables
+  hosts: localhost #inventory group name
+  connection: local #no need of user name and password for localhost
+  vars: # defining variables
+    COURSE: ansible # variable name
+    DURATION: 10HRS # variable name
+    TRAINER: spandu # variable name
+  tasks:
+    - name: print course information # task name
+      ansible.builtin.debug:
+      #vars reference should be surrounded by " "
+        msg: "Hello {{ COURSE }}, Course Duration: {{ 10HRS }}, Trainer is {{TRAINER}}"  # using variables
+         

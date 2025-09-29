@@ -1,7 +1,7 @@
 - name: hello world
   hosts: localhost 
-  connection: local # no need of user name and password for localhost
+  connection: local #no need of user name and password for localhost
   tasks:
     - name: print hello world
-      ansible.builtin.debug: # print message module name 
+      ansible.builtin.debug: # rint message module name 
         msg: "hello world"

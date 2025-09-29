@@ -5,4 +5,10 @@
   - name: install nginx server
     ansible.builtin.package: # module to install packages it will work for all linux os dosen't care about yum or apt or dnt it is handle by ansible itself, packages will install all the os 
       name: nginx
-      state: present
+      state: present # present means if it is not installed it will install if it is installed it will do nothing
+
+  - name: start nginx service
+    ansible.builtin.service: # module to start stop restart services
+      name: nginx
+      state: started # started means if it is not started it will start if it is started it will do nothing
+      enabled: yes # enabled means if it is not enabled it will enable if it is enabled it will do nothing

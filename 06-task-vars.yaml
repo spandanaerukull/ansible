@@ -1,16 +1,19 @@
-# play level variables have the globle acess if you run multiple tasks it will be available for all the tasks
-# we can use this play level variables in multiple tasks
+# task level variables have the local acess if you run multiple tasks it will be available for that particular task only
+# we can use this task level variables in single task only
 
 - name: play level variables # play level variables
   hosts: localhost #inventory group name
   connection: local #no need of user name and password for localhost
   vars: # defining variables
-    COURSE: ansible # variable name
+    COURSE: DevOps with AWS  # variable name
     DURATION: 10HRS # variable name
     TRAINER: spandu # variable name
-  tasks:
+  tasks: 
     - name: print course information # task name
+      vars: # defining variables
+        COURSE: Ansible  # here we are overriding the play level variable, this variable will be used in this task only so it is task level variable
       ansible.builtin.debug:
       #vars reference should be surrounded by " "
         msg: "Hello {{ COURSE }}, Course Duration: {{ 10HRS }}, Trainer is {{TRAINER}}"  # using variables
-         
+      
+        

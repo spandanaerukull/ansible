@@ -1,0 +1,35 @@
+
+# This is a multi-playbook yaml file
+# Each play can have different hosts and tasks
+# everything matters indentation matters in yaml files
+# ansible will run one by one 
+# we don't use multiply  regurarly but it is important to know how to use it
+
+# First Play
+- name: PLAY1
+  hosts: local
+  connection: local
+  tasks:
+    - name: hello from play 1 and task1
+      ansible.builtin.debug: #print message module name
+        msg: "Hello from PLAY-1 and TASK-1"
+
+    - name: hello from play 1 and task2
+      ansible.builtin.debug:
+        msg: "Hello from PLAY-1 and TASK-2"
+
+# Second Play
+- name: PLAY2
+  hosts: local
+  connection: local
+  tasks:
+    - name: hello from play 2 and task1
+      ansible.builtin.debug:
+        msg: "Hello from PLAY-2 and TASK-1"
+
+    - name: hello from play 2 and task2
+      ansible.builtin.debug:
+        msg: "Hello from PLAY-2 and TASK-2"
+
+
+

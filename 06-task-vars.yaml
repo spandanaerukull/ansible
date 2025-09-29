@@ -1,6 +1,7 @@
 # task level variables have the local acess if you run multiple tasks it will be available for that particular task only
 # we can use this task level variables in single task only
 
+
 - name: play level variables # play level variables
   hosts: localhost #inventory group name
   connection: local #no need of user name and password for localhost

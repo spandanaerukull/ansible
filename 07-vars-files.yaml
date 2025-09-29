@@ -1,0 +1,11 @@
+# variables from files
+
+- name: variables from files
+  hosts: local
+  connection: local
+  vars_files: # specify or reffereing the  variable files
+  - course.yaml # path of the variable file
+  tasks:
+  - name: print course information # task name
+    ansible.builtin.debug:
+      msg: "Hello I am learning {{ course }}, Duration: {{ duration }}, Trainer is: {{ trainer }}" # using variables

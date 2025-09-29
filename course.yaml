@@ -1,0 +1,5 @@
+# ansible/course.yaml
+# variables file
+course: Devsecops with AWS
+duration: 20HRS
+trainer: spandu

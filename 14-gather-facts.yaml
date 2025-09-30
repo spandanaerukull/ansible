@@ -1,0 +1,12 @@
+
+- name: gathering facts # playbook name
+  hosts: local
+  connection: local
+  tasks:
+  - name: print facts # task name
+    ansible.builtin.debug:
+      msg: "{{ ansible_facts }}" # using ansible built in variable to print the facts
+      # ansible_facts is a dictionary data type
+      # to access any specific fact use the below syntax  
+      # gather facts is used to collect the information about the server like ip address, os, memory, cpu, disk etc
+      

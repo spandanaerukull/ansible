@@ -1,0 +1,20 @@
+# 15-condictions.yaml
+# conditions in ansible
+- name: playbook control using ansible facts # playbook name
+  hosts: frontend
+  become: yes # to get root user privileges
+  tasks:
+  - name: install nginx if redhat
+    ansible.builtin.dnf: # dnf is for redhat based os like centos, rhel, rocky, almalinux
+      name: nginx
+      state: present # present means if it is not installed it will install if it is installed it will do nothing, for installing we can use present or latest 
+    when: ansible_os_family == "RedHat" # here we are using ansible built in variable ansible_os_family to check the os family of the server and based on that we are installing nginx
+    # when is used to add conditions in ansible
+
+  - name: install nginx if debian
+    ansible.builtin.apt: # apt is for debian based os like ubuntu, debian
+      name: nginx
+      state: present
+    when: ansible_os_family == "Debian"
+    # here we are using ansible built in variable ansible_os_family to check the os family of the server and based on that we are installing nginx
+    # when is used to add conditions in ansible

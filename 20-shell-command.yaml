@@ -1,0 +1,42 @@
+# ansible/20-shell-command.yaml
+# difference between shell and command module in ansible
+#>> shell module supports redirection operators like >, >>, | etc , so when we need redirection we use shell module
+#>> command module doesn't support redirection operators like >, >>, | etc , so when we don't need redirection we use command module
+#>> command module is more secure than shell module because it doesn't allow to run any shell script or any command which contains redirection operators
+#>> so if you want to run any command which doesn't contain redirection operators then use command module
+#>> if you want to run any shell script or any command which contains redirection operators then use shell module
+#>> in general i use command module (1st preference) because it is more secure than shell module but when i need to use special modules or  redirection operators then i use shell module (2nd preference)
+- name: shell vs command
+  hosts: frontend
+  tasks:
+  - name: redirect ls output to a file
+    #ansible.builtin.command: "ls -ltr > /tmp/output.txt"
+    ansible.builtin.shell: "ls -ltr > /tmp/output.txt" # here i used shell module because it supports redirection operators like >, >>, | etc
+    register: command_result # to store the output of the command in a variable
+
+  - name: print the outcome
+    ansible.builtin.debug:
+      msg: "{{ command_result }}"
+
+  - name: redirect ls output to a file using command
+    ansible.builtin.command: "ls -ltr" # here i used command module because it doesn't support redirection operators like >, >>, | etc
+    #ansible.builtin.shell: "ls -ltr > /tmp/output.txt"
+    register: command_output # to store the output of the command in a variable
+  
+  - name: print the output
+    ansible.builtin.debug:
+      msg: "{{ command_output }}" 
+
+      # here command module will not redirect the output to a file because it doesn't support redirection operators like >, >>, | etc
+      # but shell module will support redirection operators like >, >>, | etc
+      # so if you want to use redirection operators then use shell module
+      # if you don't want to use redirection operators then use command module because command module is more secure than shell module
+      # if you want to run any shell script or any command which contains redirection operators then use shell module
+      # if you want to run any command which doesn't contain redirection operators then use command module  
+      # command module is more secure than shell module because it doesn't allow to run any shell script or any command which contains redirection operators
+      # so if you want to run any command which doesn't contain redirection operators then use command module
+      # if you want to run any shell script or any command which contains redirection operators then use shell module
+      # if you want to run any command which doesn't contain redirection operators then use command module  
+
+      # here in general i use command module (1st preference) because it is more secure than shell module but when i need to use special modules or  redirection operators then i use shell module (2nd preference)
+      

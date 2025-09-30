@@ -1,0 +1,50 @@
+# ansible/19-functions.yaml
+- name: functions
+  hosts: local
+  connection: local
+  vars:
+    persons: "Ramesh,Suresh,Raheem,Joseph"
+  tasks:
+  - name: check undefined variable # if the variable is not defined it will take the default value
+    ansible.builtin.debug:
+      msg: "Hello, {{ person | default('Ramesh') }}" # if person variable is not defined it will take the default value Ramesh
+
+  - name: print names
+    ansible.builtin.debug:
+      msg: "Hello {{ persons | split(',') }}" # split function will convert string into list based on the delimiter
+
+  - name: convert map into list
+    vars:
+      course:
+        name: ansible
+        duration: 10HR
+        trainer: sivakumar
+    ansible.builtin.debug:
+      msg: "Course Info: {{ course | dict2items  }}" # dict2items function will convert map into list
+
+  - name: convert list into map
+    vars:
+      course:
+      - {'key': 'name', 'value': 'ansible'}
+      - {'key': 'duration', 'value': '10HR'}
+      - {'key': 'trainer', 'value': 'sivakumar'}
+    ansible.builtin.debug:
+      msg: "Course Info: {{ course | items2dict  }}" # items2dict function will convert list into map
+
+  - name: convert to uppercase
+    vars:
+      name: "Sivakumar Reddy M"
+    ansible.builtin.debug:
+      msg: "Hello {{ name | upper }}" # upper function will convert to uppercase
+
+  - name: convert to lowercase
+    vars:
+      name: "Sivakumar Reddy M"
+    ansible.builtin.debug:
+      msg: "Hello {{ name | lower }}" # lower function will convert to lowercase
+
+  - name: check IP address is valid or not
+    vars:
+      ip: "192.168.1.1"
+    ansible.builtin.debug:
+      msg: "{{ ip | ansible.utils.ipaddr }}" # ipaddr function will check the given IP address is valid or not, if valid it will return the same IP address else it will return empty

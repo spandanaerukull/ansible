@@ -1,0 +1,25 @@
+# example for the loops concept in ansible
+- name: install packages
+  hosts: frontend
+  become: yes
+  tasks:
+  - name: install packages
+    ansible.builtin.package:
+      name: "{{ item }}" # item is a keyword which will take the value from the loop
+      state: installed
+    loop:
+    - mysql
+    - nginx
+    - zip
+
+
+    # here we are installing multiple packages using loop
+    # item is a keyword which will take the value from the loop
+    # loop is used to iterate over a list of items
+    # when we are refering the variables we should use the doublecodes {{ }}
+    # loops means repetition
+    # you can also use loop with range function
+    # for example if you want to create 10 users you can use loop: "{{ range(1,11) | list }}" and name: "user{{ item }}"
+    # this will create users user1 to user10
+    # you can also use loop with complex data structures like list of dictionaries
+    # for example if you want to create users with different names and ids you can use loop

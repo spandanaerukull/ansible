@@ -1,0 +1,17 @@
+
+- name: loops # playbook name
+  hosts: local
+  connection: local
+  tasks:
+  - name: print names
+    ansible.builtin.debug: # print message module name
+      msg: "Hello, {{ item }}" #item here is reserved keyword
+    loop: # list of items
+    - Suresh
+    - Ramesh
+    - Joseph
+    - Raheem
+
+    # you can also use loop with range function
+    # loops means repetition
+    # when we are refering the variables we should use the doublecodes {{ }}

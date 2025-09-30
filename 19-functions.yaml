@@ -1,4 +1,19 @@
 # ansible/19-functions.yaml
+# in ansible we have many functions to manipulate the data
+# some of the commonly used functions are
+# default, split, dict2items, items2dict, upper, lower, ipaddr etc
+# functions are also called as filters
+# functions are used with the pipe symbol |
+# functions are used to manipulate the data
+# for example if you want to convert a string into a list you can use the split function
+# if you want to convert a list into a map you can use the items2dict function
+# if you want to convert a map into a list you can use the dict2items function
+# if you want to convert a string into uppercase you can use the upper function
+# if you want to convert a string into lowercase you can use the lower function
+# if you want to check the given IP address is valid or not you can use the ipaddr function
+# if the variable is not defined you can use the default function to give a default value
+# functions are very useful in ansible to manipulate the data
+# if we want to create the own functions we have to use python language to create the own functions
 - name: functions
   hosts: local
   connection: local

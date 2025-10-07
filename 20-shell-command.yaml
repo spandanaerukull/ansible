@@ -1,6 +1,7 @@
 # ansible/20-shell-command.yaml
 # difference between shell and command module in ansible
 #>> shell module supports redirection operators like >, >>, | etc , so when we need redirection we use shell module
+#command module is used to run commands when we don't have a specific module for that command in ansible
 #>> command module doesn't support redirection operators like >, >>, | etc , so when we don't need redirection we use command module
 #>> command module is more secure than shell module because it doesn't allow to run any shell script or any command which contains redirection operators
 #>> so if you want to run any command which doesn't contain redirection operators then use command module
